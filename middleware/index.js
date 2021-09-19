@@ -2,20 +2,33 @@ let { getUserByIdService, checkEmailService } = require("../services/userService
 let { checkIdOwnerService } = require('../services/modifiesOwnerService')
 var { Verify } = require('../utils/JWT');
 var { caseErrorUser, caseErrorServer } = require('../utils/returnValue');
+
+//register
 let isEmailMiddleware = async (req, res, next) => {
   //Check Email có tồn tại không.
   try {
     let email = await checkEmailService(req.body.email);
-    console.log(email);
     if (!email) {
-      //Nếu email không tồn tại
       next();
     } else {
-      //Nếu email tồn tại
       caseErrorUser(res, "Tài khoản đã tồn tại");
     }
   } catch (error) {
     caseErrorServer(res, "Lỗi server isEmail Middleware");
+  }
+}
+//login
+let checkLoginMiddleware = async (req, res, next) => {
+  try {
+    let user = await checkEmailService(req.body.email);
+    if (!user) {
+      caseErrorUser(res, "Tài khoản không tồn tại ");
+    } else {
+      req.user = user;
+      next();
+    }
+  } catch (error) {
+    caseErrorServer(res, "Lỗi server checkLogin Middleware");
   }
 }
 
@@ -34,21 +47,6 @@ let isIdOwnerMiddleware = async (req, res, next) => {
     }
   } catch (error) {
     caseErrorServer(res, "Lỗi server isEmail Middleware");
-  }
-}
-let checkLoginMiddleware = async (req, res, next) => {
-  try {
-    let user = await checkEmailService(req.body.email);
-    if (!user) {
-      //Nếu không tìm thấy email
-      caseErrorUser(res, "Tài khoản không tồn tại ");
-    } else {
-      req.user = user;
-      next();
-    }
-  } catch (error) {
-    console.log(error);
-    caseErrorServer(res, "Lỗi server checkLogin Middleware");
   }
 }
 
@@ -78,9 +76,9 @@ let checkAuthFavorite = async (req, res, next) => {
 //Check xem da dang nhap chua
 let checkAuth = async (req, res, next) => {
   try {
-
     var token = req.cookies.token || req.body.token;
     // || req.headers.authorization;
+
     if (token) {
       let data = Verify(token, process.env.JWT_SECRET);
       let user = await getUserByIdService(data._id);

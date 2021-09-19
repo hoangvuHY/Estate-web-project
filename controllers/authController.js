@@ -9,8 +9,6 @@ var { caseSuccess, caseErrorUser, caseErrorServer } = require('../utils/returnVa
 
 let signUpController = async (req, res) => {
   try {
-    // let user = await signUpService(req.body); 
-    console.log("signUpController: ",);
     await signUpService(req.body);
     caseSuccess(res, "Đăng ký thành công");
   } catch (error) {

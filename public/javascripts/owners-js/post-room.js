@@ -1,4 +1,4 @@
-$("button.payment-post").click(() => {
+$("button.payment-post").on('click', () => {
   var time_post = $('select[name="time_post"]').val();
   $.ajax({
     method: 'GET',

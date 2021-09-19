@@ -19,7 +19,7 @@ $(document).on("click", ".mom-article .col-md-4 .title-article", function () {
 /* Thanh tìm kiếm */
 let xoaTinh = true;
 $.getJSON("../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../public/local.json", function (result) {
-  $("#tinh").click(function () {
+  $("#tinh").on('click', function () {
     if (xoaTinh == true) {
       result.forEach((tinh, index) => {
         let option = `<option>${tinh.name}</option>`;
@@ -350,7 +350,7 @@ $.ajax({
 });
 
 
-$("#next").click(function () {
+$("#next").on('click', function () {
   n += distance;
   if (n >= length) {
     n = n - distance;
@@ -430,7 +430,7 @@ $("#next").click(function () {
 
 })
 
-$("#prev").click(function () {
+$("#prev").on('click', function () {
 
   n -= distance;
   if (n < 0) {
@@ -517,7 +517,7 @@ $("#prev").click(function () {
 
 
 /* Tìm kiếm backend */
-$("#search").click(function () {
+$("#search").on('click', function () {
   let loai_nha_tro = $("#loai-nha-tro").find(":selected").val();
   let tinh = $("#tinh").find(":selected").val();
   let huyen = $("#huyen").find(":selected").val();

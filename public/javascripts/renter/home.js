@@ -26,7 +26,7 @@ Cookies.remove("search");
 /* Tìm kiếm */
 let xoaTinh = true;
 $.getJSON("public/local.json", function (result) {
-  $("#tinh").click(function () {
+  $("#tinh").on('click', function () {
     if (xoaTinh == true) {
       result.forEach((tinh, index) => {
         let option = `<option>${tinh.name}</option>`;
@@ -93,7 +93,7 @@ $.getJSON("public/local.json", function (result) {
 /* Tim kiem end */
 
 /* Tìm kiếm backend */
-$("#search").click(function () {
+$("#search").on('click', function () {
   let loai_nha_tro = $("#loai-nha-tro").find(":selected").val();
   let tinh = $("#tinh").find(":selected").val();
   let huyen = $("#huyen").find(":selected").val();

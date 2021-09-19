@@ -1,6 +1,6 @@
 
 
-$(".save_new_room").click(() => {
+$(".save_new_room").on('click', () => {
   var address_room = $('input[name="address_room"]').val();
   var near_places = $('input[name="near_places"]').val();
   var kind_room = $('select[name="kind_room"]').val();

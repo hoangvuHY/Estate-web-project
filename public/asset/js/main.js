@@ -286,7 +286,7 @@
   hide();
 })(jQuery);
 
-$(".signOutIcon").click(() => {
+$(".signOutIcon").on('click', () => {
   Cookies.remove("token");
   window.location.href = '/login';
 })

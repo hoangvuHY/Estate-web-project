@@ -1,6 +1,8 @@
 let UserModel = require('../models/user.model');
 let bcrypt = require('bcrypt');
+
 const saltRounds = 10;
+
 let signUpService = (infoUser) => {
   let {
     identification,
@@ -13,6 +15,7 @@ let signUpService = (infoUser) => {
     password,
     email
   } = infoUser;
+
   //Mã hóa Password người dùng 
   if (password && email) {
     const salt = bcrypt.genSaltSync(saltRounds);
@@ -21,7 +24,6 @@ let signUpService = (infoUser) => {
   } else {
     throw "Error"
   }
-
 }
 
 module.exports = { signUpService }

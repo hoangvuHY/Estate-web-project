@@ -34,7 +34,7 @@ function getLoginRegister() {
         `;
         $("#tab-login-subcrible").append(template);
 
-        $("#logout").click(() => {
+        $("#logout").on('click', () => {
           Cookies.remove("token");
           window.location.href = '/login';// localhost:3000/login
         })
@@ -47,6 +47,6 @@ function getLoginRegister() {
   $("#tab-login-subcrible").append(template);
 }
 
-$('.nav-item.nav-link').click(function () {
+$('.nav-item.nav-link').on('click', function () {
   Cookies.remove("idPost");
 })

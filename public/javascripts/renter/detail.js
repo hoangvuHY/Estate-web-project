@@ -105,7 +105,7 @@ $(function () {
 // Comment của người thuê
 const five = 5;
 
-$('#send-comment').click(function () {
+$('#send-comment').on('click', function () {
   var content = $('#comment-render').val();
   var token = Cookies.get('token');
 
