@@ -1,5 +1,3 @@
-
-
 $(".save_new_room").on('click', () => {
   var address_room = $('input[name="address_room"]').val();
   var near_places = $('input[name="near_places"]').val();
@@ -46,25 +44,22 @@ $(".save_new_room").on('click', () => {
     } else {
       alert(result.message);
     }
-  }).catch((error) => {
-    console.log(error);
-  })
+  }).catch((error) => {})
 })
 
 
 
 getAllPosts();
- 
+
 function getAllPosts() {
   $.ajax({
     url: '/owners/all-posts-rent',
     method: 'GET',
   }).then((result) => {
     var { dataPost } = result;
-    console.log(dataPost);
     if (!result.error && result.status === 200) {
       var template, rentStatus = '';
-      $(".content-all-posts").empty(); 
+      $(".content-all-posts").empty();
       dataPost.forEach((post) => {
         if (post.status === 'pending') {
           if (post.rent_status === 'Hired') {

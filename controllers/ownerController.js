@@ -24,7 +24,6 @@ let createPostController = async (req, res) => {
     object.images_room = images;
     object.idOwner = idOwner;
     var post_room = await createPostRoomService(object);
-    console.log(post_room);
     images.length = 0;
     if (post_room) {
       caseSuccess(res, "Bạn đã tạo bài đăng thành công. Chờ Admin phê duyệt")
@@ -58,7 +57,6 @@ let postsOwnerController = async (req, res) => {
 let detailPostController = async (req, res) => {
   try {
     var post = await findPostService(req.params.idPost);
-    console.log(typeof post);
     if (post) {
       return res.json({
         status: 200,

@@ -12,7 +12,6 @@ let allNotifyHiredService = () => {
 }
 let deleteNotifyOwnerService = (idNotify) => {
   return Notify.deleteOne({ _id: idNotify })
-  // return Notify.deleteOne({_id: idNotify})
 }
 module.exports = {
   createNotifyService,

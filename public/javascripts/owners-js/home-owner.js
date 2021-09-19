@@ -317,7 +317,6 @@ function getNotifies() {
   })
 }
 
-
 $(document).on('click', '.notifyjs-foo-base .yes', function () {
   //show button text
   var idNotify = $(this).attr('data-notify-id');

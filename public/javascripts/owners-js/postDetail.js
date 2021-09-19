@@ -1,5 +1,6 @@
- 
+
 getData();
+// Lấy tất cả bài viết của từng chủ trọ
 function getData() {
   $.ajax({
     method: "GET",
@@ -7,7 +8,8 @@ function getData() {
   }).then((result) => {
     var { dataPost } = result;
     $("tbody.infoPost").empty();
-    var template, rentStatus;
+    var template;
+
     dataPost.forEach((element) => {
       if (element.status === 'pending') {
         // Waiting for approval 
@@ -63,7 +65,7 @@ function getData() {
                 <tr>
           `;
         } else {//Not yet hired 
- 
+
           template = `  
           <tr>
             <td>${element.address_room}</td>
@@ -75,7 +77,7 @@ function getData() {
             <td></td>  
           <tr>
           `;//Not yet hired 
- 
+
         }
       } else {
         template = `
@@ -108,8 +110,8 @@ function getData() {
         `;//Not yet hired 
       }
       $("tbody.infoPost").append(template);
- 
- 
+
+
     })
   }).catch((error) => {
     console.log(error);
@@ -330,18 +332,18 @@ function handleExtend() {
     console.log(error);
   })
 }
- 
- 
+
+// Sửa bài viết ở chế độ pending
 function handleEditPost() {
   // cho vao model:  .content-update
   var idPost = $(this).attr("data-id");
   $.ajax({
-    ///detail-post/:idPost
     method: 'GET',
     url: "/owners/detail-post/" + idPost
   }).then((result) => {
     var { dataPost } = result;
     $('.content-update').empty();
+    // Cho bài viết vào modal
     template = `
       
 <style>
@@ -541,12 +543,26 @@ function handleEditPost() {
         </div>
 `;
     $('.content-update').append(template);
-  }).catch((error) => {
-    console.log(error);
-  })
+  }).catch((error) => { })
 }
-{/*  */ }
- 
+
+//Xóa bài viết ở chế độ pending
+function handleDeletePost() {
+  var idPost = $(this).attr("data-id");
+  $.ajax({
+    method: 'delete',
+    url: "/owners/delete-post-room/" + idPost
+  }).then((result) => {
+    if (!result.error && result.status === 200) {
+      alert(result.message);
+      $(this).parent().parent().empty();
+    } else {
+      alert(result.message);
+    }
+  }).catch((error) => { })
+}
+
+
 function handlePaymentPost() {
   var time_post = $('select[name="time_post"]').val();
   var idPost = $(this).attr('data-id');
@@ -648,13 +664,13 @@ function handlePaymentPost() {
   }).catch((error) => {
   })
 }
- 
- 
+
+
 function handleSavePost() {
   var statusPost = $(this).attr('data-status');
   var idPost = $(this).attr('data-id');
   var images_room = $(this).attr('data-images');
- 
+
   var address_room = $('input[name="address_room"]').val();
   var near_places = $('input[name="near_places"]').val();
   var kind_room = $('select[name="kind_room"]').val();
@@ -702,9 +718,9 @@ function handleSavePost() {
         alert(result.message);
       }
     }).catch((error) => {
- 
+
     })
-  } 
+  }
   $.ajax({
     method: 'put',
     url: '/owners/update-post-room/' + idPost,
@@ -732,26 +748,10 @@ function handleSavePost() {
       alert(result.message);
     }
   }).catch((error) => {
- 
+
   })
 }
- 
-function handleDeletePost() {
-  var idPost = $(this).attr("data-id");
-  $.ajax({
-    method: 'delete',
-    url: "/owners/delete-post-room/" + idPost
-  }).then((result) => {
-    if (!result.error && result.status === 200) {
-      alert(result.message);
-      $(this).parent().parent().empty();
-    } else {
-      alert(result.message);
-    }
-  }).catch((error) => {
-    console.log(error);
-  })
-}
+
 function handleHiredPost() {
   var idPost = $(this).attr("data-id");
   var idOwner = $(this).attr("data-id-owner");

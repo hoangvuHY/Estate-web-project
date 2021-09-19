@@ -6,7 +6,6 @@ $("button.payment-post").on('click', () => {
   }).then((result) => {
     var { dataUser } = result;
     const price = 2;
-    console.log(typeof time_post);
     var template = `
     <div class="container" style="width:100%">
     <div class="row">
@@ -92,9 +91,9 @@ $("button.payment-post").on('click', () => {
     $(".payment-content").append(template);
     $("button.payment-post").addClass('payment-post-none');
     $('select').attr('disabled', true);
-  }).catch((error) => {
-  })
+  }).catch((error) => { })
 })
+
 function handleSubmitPost() {
   var address_room = $('input[name="address_room"]').val();
   var near_places = $('input[name="near_places"]').val();

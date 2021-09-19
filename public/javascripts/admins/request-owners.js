@@ -6,7 +6,6 @@ function getData() {
   }).then((result) => {
     if (!result.error && result.status === 200) {
       var { dataOwner } = result;
-      console.log(dataOwner);
       dataOwner.forEach((element) => {
         var template
         if (element.status === 'pending') {
@@ -16,7 +15,7 @@ function getData() {
             <td  class ='address'>${element.address}</td>
             <td  class ='phone'>${element.phone}</td> 
             <td  class ='username'>${element.username}</td>
-            <td >${element.status}</td>
+            <td  class ='status'>${element.status}</td>
             <td>
               <button onClick = handleAccepted.call(this) data-id = ${element._id} data-owner =${element.idOwner}  class="accepted btn-primary ">Accept</button>
               <button onClick = handleCancel.call(this)  class="cancel btn-danger"   data-id = ${element._id} data-owner =${element.idOwner}>Cancel</button>
@@ -60,6 +59,7 @@ function handleAccepted() {
     if (!result.error && result.status === 200) {
       alert(result.message);
       $(this).parent().empty();
+      $('.status').text('active');
     }
   }).catch((error) => {
 
@@ -75,8 +75,7 @@ function handleCancel() {
     if (!result.error && result.status === 200) {
       alert(result.message);
       $(this).parent().empty();
+      $('.status').text('cancel');
     }
-  }).catch((error) => {
-
-  })
+  }).catch((error) => { })
 }

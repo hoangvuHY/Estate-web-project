@@ -13,23 +13,20 @@
           if (dataOwner.length > 0) {
             console.log('Day la owner: ', dataOwner[0]);
             var template;
-
-
             if (dataOwner[0].status === 'pending') {
               template =
                 `
             <div class='notification-approval'>
               <h1>Bạn cần chờ phê duyệt</h1>
-              <h4>Nhấn vào đây để trở về trang chủ. Nếu bạn nhấp lại ngay lập tức, bạn sẽ mất dữ liệu </h4>
               
-              <button data-id = ${dataOwner[0]._id} onClick=handleWaiting.call(this) id="refresh-approve" type="button" class="btn btn-secondary btn-rounded">Quay lại trang</button>
+              <button data-id = ${dataOwner[0]._id} onClick=handleWaiting.call(this) id="refresh-approve" type="button" class="btn btn-secondary btn-rounded">Quay lại trang Home</button>
               </div>
           `;
 
               $(".content-waiting").append(template);
               setTimeout(function () {
                 location.reload()
-              }, 1000 * 30);
+              }, 1000 * 20);
               $('body').attr('style', `height: 100vh;background: url(../background-login-logout.gif);background-size: cover;background-repeat: no-repeat;background-position-y: -29px;background-position-x: -5px;
                 display: flex;
                     align-items: center;
@@ -38,25 +35,21 @@
               $('.notification-approval').attr('style', `
                   color : white;
                   text-align : center;
-                  
           `);
-
-
             }
             else if (dataOwner[0].status === 'cancel') {
               template =
                 `
             <div class='notification-approval'>
               <h1>Bài viết của bạn đã bị hủy</h1>
-              <h4>Nhấn vào đây để trở về trang chủ. Nếu bạn nhấp lại ngay lập tức, bạn sẽ mất dữ liệu  </h4>
-              <button data-id = ${dataOwner[0]._id} onClick=handleWaiting.call(this) id="refresh-approve" type="button" class="btn btn-secondary btn-rounded">Quay lại trang</button>
+              <button data-id = ${dataOwner[0]._id} onClick=handleWaiting.call(this) id="refresh-approve" type="button" class="btn btn-secondary btn-rounded">Quay lại trang Home</button>
        
               </div>
           `;
               $(".content-waiting").append(template);
               setTimeout(function () {
                 location.reload()
-              }, 1000 * 30);
+              }, 1000 * 20);
               $('body').attr('style', `height: 100vh;background: url(../background-login-logout.gif);background-size: cover;background-repeat: no-repeat;background-position-y: -29px;background-position-x: -5px;
                 display: flex;
                     align-items: center;
@@ -65,23 +58,19 @@
               $('.notification-approval').attr('style', `
                   color : white;
                   text-align : center;
-                  
           `);
-
             }
             else {
               template =
                 `<div class='notification-approval'>
-                <h1>Your request has been accepted</h1>
-                  <h4>Nhấn vào đây để trở về trang chủ. Nếu bạn nhấp lại ngay lập tức, bạn sẽ mất dữ liệu  </h4>
-                  <button data-id = ${dataOwner[0]._id} onClick=handleWaiting.call(this) id="refresh-approve" type="button" class="btn btn-secondary btn-rounded">Quay lại trang</button>
-       
+                <h1>Yêu cầu chỉnh sửa đã được chấp nhận</h1>
+                  <button data-id = ${dataOwner[0]._id} onClick=handleWaiting.call(this) id="refresh-approve" type="button" class="btn btn-secondary btn-rounded">Quay lại trang Home</button>
               </div>
             `;
               $(".content-waiting").append(template);
               setTimeout(function () {
                 location.reload()
-              }, 1000 * 30);
+              }, 1000 * 20);
               $('body').attr('style', `height: 100vh;background: url(../background-login-logout.gif);background-size: cover;background-repeat: no-repeat;background-position-y: -29px;background-position-x: -5px;
                 display: flex;
                     align-items: center;
@@ -90,7 +79,6 @@
               $('.notification-approval').attr('style', `
                   color : white;
                   text-align : center;
-                  
           `);
             }
           } else {
