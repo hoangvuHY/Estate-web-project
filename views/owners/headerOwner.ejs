@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
 
   <!--  CSS for Demo Purpose, don't include it in your project     -->
-  <link href="../stylesheets/owners-css/demo.css" rel="stylesheet" />
+  <link href="../stylesheets/owners-css/home-owner.css" rel="stylesheet" />
 
 </head>
 
@@ -126,7 +126,7 @@
               </li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" style="display: flex; align-items: center;">
               <li>
                 <a href="">
                   <p style="display: none;">Account</p>
@@ -149,6 +149,16 @@
                   <li class="divider"></li>
                   <li><a href="#">Separated link</a></li>
                 </ul>
+              </li>
+              <li class="notify">
+                <div class="dropdown notify-dropdown">
+                  <span class="fa fa-bell-o dropdown-toggle"id="dropdownNotify" data-toggle="dropdown" aria-expanded="false"></span>
+
+                  <div class="notify-content">
+                    <div class="dropdown-menu dropdown-content" aria-labelledby="dropdownNotify">
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
                 <a href="#">

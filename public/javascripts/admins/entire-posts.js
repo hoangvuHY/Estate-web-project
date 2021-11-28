@@ -1,4 +1,4 @@
-$(".save_new_room").on('click', () => {
+$(".save_new_room").on("click", () => {
   var address_room = $('input[name="address_room"]').val();
   var near_places = $('input[name="near_places"]').val();
   var kind_room = $('select[name="kind_room"]').val();
@@ -16,11 +16,11 @@ $(".save_new_room").on('click', () => {
   var water_price = $('input[name="water_price"]').val();
   var other_utility = $('input[name="other_utility"]').val();
   var time_post = $('select[name="time_post"]').val();
-  var status = 'active';
+  var status = "active";
 
   $.ajax({
-    url: '/owners/post-room',
-    method: 'post',
+    url: "/owners/post-room",
+    method: "post",
     data: {
       address_room,
       kind_room,
@@ -28,43 +28,48 @@ $(".save_new_room").on('click', () => {
       number_room,
       price,
       area,
-      general_owner, bathroom,
-      hot_cold_bottles, kitchen, cooking, conditioning,
+      general_owner,
+      bathroom,
+      hot_cold_bottles,
+      kitchen,
+      cooking,
+      conditioning,
       balcony,
       electricity_price,
       water_price,
       other_utility,
       time_post,
-      status
-    }
-  }).then((result) => {
-    if (!result.error && result.status === 200) {
-      alert(result.message);
-      window.location.href = '/';
-    } else {
-      alert(result.message);
-    }
-  }).catch((error) => {})
-})
-
-
+      status,
+    },
+  })
+    .then((result) => {
+      if (!result.error && result.status === 200) {
+        alert(result.message);
+        window.location.href = "/";
+      } else {
+        alert(result.message);
+      }
+    })
+    .catch((error) => {});
+});
 
 getAllPosts();
 
 function getAllPosts() {
   $.ajax({
-    url: '/owners/all-posts-rent',
-    method: 'GET',
-  }).then((result) => {
-    var { dataPost } = result;
-    if (!result.error && result.status === 200) {
-      var template, rentStatus = '';
-      $(".content-all-posts").empty();
-      dataPost.forEach((post) => {
-        if (post.status === 'pending') {
-          if (post.rent_status === 'Hired') {
-
-            template = `
+    url: "/owners/all-posts-rent",
+    method: "GET",
+  })
+    .then((result) => {
+      var { dataPost } = result;
+      if (!result.error && result.status === 200) {
+        var template,
+          rentStatus = "";
+        $(".content-all-posts").empty();
+        dataPost.forEach((post) => {
+          if (post.status === "pending") {
+            if (post.rent_status === "Hired") {
+              template = `
           <tr>
             <th>${post.idOwner.name}</th>
             <th>${post._id}</th>
@@ -76,8 +81,8 @@ function getAllPosts() {
             <td></td> 
           </tr> 
           `;
-          } else {
-            template = `
+            } else {
+              template = `
           <tr>
             <th>${post.idOwner.name}</th>
             <th>${post._id}</th>
@@ -88,21 +93,24 @@ function getAllPosts() {
             <td></td>
             <td></td>
             <td>
-              <span class="edit" style="cursor: pointer; margin-right: 10px;" onClick = handleEditAccept.call(this) data-id='${post._id}' class="btn btn-primary" data-toggle="modal" data-target="#edit-accept">
+              <span class="edit" style="cursor: pointer; margin-right: 10px;" onClick = handleEditAccept.call(this) data-id='${
+                post._id
+              }' class="btn btn-primary" data-toggle="modal" data-target="#edit-accept">
                 <i class=" fas fa-edit"></i>
               </span>
-              <span  class="cancel" style="cursor: pointer;"  onClick = handleCancelPost.call(this) data-id-owner='${post.idOwner._id}' data-id='${post._id}'><i class="fas fa-minus-circle"></i></span>
+              <span  class="cancel" style="cursor: pointer;"  onClick = handleCancelPost.call(this) data-id-owner='${
+                post.idOwner._id
+              }' data-id='${
+                post._id
+              }'><i class="fas fa-minus-circle"></i></span>
             </td>
           </tr> 
           `;
-
-          }
-
-        }
-        else if (post.status === 'active') {
-          if (post.idOwner.role === 'owner') {
-            if (post.rent_status === 'Hired') {
-              template = `
+            }
+          } else if (post.status === "active") {
+            if (post.idOwner.role === "owner") {
+              if (post.rent_status === "Hired") {
+                template = `
             <tr>
               <th>${post.idOwner.name}</th>
               <th>${post._id}</th>
@@ -115,8 +123,8 @@ function getAllPosts() {
               <td></td>  
             </tr> 
             `;
-            } else {
-              template = `
+              } else {
+                template = `
             <tr>
               <th>${post.idOwner.name}</th>
               <th>${post._id}</th>
@@ -129,27 +137,22 @@ function getAllPosts() {
               <td></td>  
             </tr> 
             `;
-              if (new Date().getTime() >= new Date(post.expire_post).getTime()) {
-                $.ajax({
-                  url: '/owners/update-post-room/' + post._id,
-                  method: 'put',
-                  data: { status: 'pending' }
-                }).then((result) => { }).catch((error) => { });
+                if (
+                  new Date().getTime() >= new Date(post.expire_post).getTime()
+                ) {
+                  $.ajax({
+                    url: "/owners/update-post-room/" + post._id,
+                    method: "put",
+                    data: { status: "pending" },
+                  })
+                    .then((result) => {})
+                    .catch((error) => {});
+                }
               }
             }
 
-            /*             setTimeout(() => {
-                          $.ajax({
-                            url: 'owners/update-post-room/' + post._id,
-                            method: 'put',
-                            data: { status: 'pending' }
-                          }).then((result) => { alert(result.message) }).catch((error) => { });
-                          // location.reload();
-                        }, 1000 * 60 * 60 * 24 * post.time_post); Cach 2 */
-          }
-
-          if (post.rent_status === 'Hired' && post.idOwner.role === 'admin') {
-            template = `
+            if (post.rent_status === "Hired" && post.idOwner.role === "admin") {
+              template = `
             <tr>
               <th>${post.idOwner.name}</th>
               <th>${post._id}</th>
@@ -162,9 +165,12 @@ function getAllPosts() {
               <td></td>  
             </tr> 
             `;
-          }
-          if (post.rent_status === 'Not yet hired' && post.idOwner.role === 'admin') {
-            template = `
+            }
+            if (
+              post.rent_status === "Not yet hired" &&
+              post.idOwner.role === "admin"
+            ) {
+              template = `
             <tr>
               <th>${post.idOwner.name}</th>
               <th>${post._id}</th>
@@ -176,16 +182,17 @@ function getAllPosts() {
               <td></td> 
               <td></td> 
               <td>
-                <button onClick=handleHiredAdmin.call(this) style="font-size:13px;padding: 7px; " data-id = ${post._id}  type="button" class="btn btn-primary btn-hired">
+                <button onClick=handleHiredAdmin.call(this) style="font-size:13px;padding: 7px; " data-id = ${
+                  post._id
+                }  type="button" class="btn btn-primary btn-hired">
                    <i style="  margin-right: 5px;" class="fas fa-check"></i>Hired
                 </button>
               </td> 
             </tr> 
             `;
-          }
-        }
-        else {
-          template = `
+            }
+          } else {
+            template = `
           <tr>
             <th>${post.idOwner.name}</th>
             <th>${post._id}</th>
@@ -194,33 +201,35 @@ function getAllPosts() {
             <td>${post.status}</td>  
             <td></td>  
             <td>
-             <span style="  cursor: pointer;" onClick=handleRestorePost.call(this)  data-id='${post._id}' class="restore ml-4"><i class="fas fa-trash-restore"></i></span> 
+             <span style="  cursor: pointer;" onClick=handleRestorePost.call(this)  data-id='${
+               post._id
+             }' class="restore ml-4"><i class="fas fa-trash-restore"></i></span> 
             </td> 
           </tr>  
           `;
-        }
-        $(".content-all-posts").append(template);
-        $(".button-hired").append(rentStatus);
-
-      });
-
-    }
-  }).catch((error) => {
-    console.log(error);
-  })
+          }
+          $(".content-all-posts").append(template);
+          $(".button-hired").append(rentStatus);
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 function handleEditAccept() {
   var idPost = $(this).attr("data-id");
   $.ajax({
     ///detail-post/:idPost
-    method: 'GET',
-    url: "/owners/detail-post/" + idPost
-  }).then((result) => {
-    var { dataPost } = result;
-    console.log(dataPost.address_room);
-    $('.content-edit-accept').empty();
-    template = `
+    method: "GET",
+    url: "/owners/detail-post/" + idPost,
+  })
+    .then((result) => {
+      var { dataPost } = result;
+      console.log(dataPost.address_room);
+      $(".content-edit-accept").empty();
+      template = `
 <style>
   * {
     margin: 0;
@@ -360,15 +369,16 @@ function handleEditAccept() {
       <button onClick = handleAcceptedPost.call(this) data-time-post="${dataPost.time_post}" data-id-owner =  '${dataPost.idOwner} ' data-id = '${dataPost._id} ' type="button" class="btn btn-primary ">Accept</button>
     </div>
 `;
-    $('.content-edit-accept').append(template);
-    $(".images-detail").empty();
-    dataPost.images_room.forEach((image) => {
-      var _image = `<img src="${image}" style="max-width: 25%!important" alt="Not Image" class="text-center w-100 img-thumbnail col-3">`
-      $(".images-detail").append(_image);
+      $(".content-edit-accept").append(template);
+      $(".images-detail").empty();
+      dataPost.images_room.forEach((image) => {
+        var _image = `<img src="${image}" style="max-width: 25%!important" alt="Not Image" class="text-center w-100 img-thumbnail col-3">`;
+        $(".images-detail").append(_image);
+      });
     })
-  }).catch((error) => {
-    console.log(error);
-  })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 //var status = 'active';
@@ -377,95 +387,103 @@ function handleAcceptedPost() {
   var idPost = $(this).attr("data-id");
   var idOwner = $(this).attr("data-id-owner");
   var content = "của bạn đã được chấp nhận";
-  var status = 'active';
-  var timePost = parseInt($(this).attr('data-time-post'));
+  var status = "active";
+  var timePost = parseInt($(this).attr("data-time-post"));
   var expire_post = new Date();
   $.ajax({
-    url: 'owners/update-post-room/' + idPost,
-    method: 'put',
-    data: { status, expire_post: expire_post.addDays(timePost) }
-  }).then((result) => {
-    if (!result.error && result.status === 200) {
-      alert(result.message);
-      window.location.href = '/datatables';
-    } else {
-      alert(result.message);
-    }
-  }).catch((error) => {
-    console.log(error);
+    url: "owners/update-post-room/" + idPost,
+    method: "put",
+    data: { status, expire_post: expire_post.addDays(timePost) },
   })
+    .then((result) => {
+      if (!result.error && result.status === 200) {
+        alert(result.message);
+        window.location.href = "/datatables";
+      } else {
+        alert(result.message);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   $.ajax({
-    url: 'notify/create-notify',
-    method: 'post',
-    data: { idPost, idOwner, content }
-  })
+    url: "notify/create-notify",
+    method: "post",
+    data: { idPost, idOwner, content },
+  });
 }
 function handleCancelPost() {
   var idPost = $(this).attr("data-id");
   var idOwner = $(this).attr("data-id-owner");
   var content = "của bạn đã bị hủy";
-  var status = 'cancel';
+  var status = "cancel";
   $.ajax({
-    url: 'owners/update-post-room/' + idPost,
-    method: 'put',
-    data: { status }
-  }).then((result) => {
-    if (!result.error && result.status === 200) {
-      alert(result.message);
-      window.location.href = '/datatables';
-    } else {
-      alert(result.message);
-    }
-  }).catch((error) => {
-    console.log(error);
+    url: "owners/update-post-room/" + idPost,
+    method: "put",
+    data: { status },
   })
+    .then((result) => {
+      if (!result.error && result.status === 200) {
+        alert(result.message);
+        window.location.href = "/datatables";
+      } else {
+        alert(result.message);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   $.ajax({
-    url: 'notify/create-notify',
-    method: 'post',
-    data: { idPost, idOwner, content }
-  })
+    url: "notify/create-notify",
+    method: "post",
+    data: { idPost, idOwner, content },
+  });
 }
 Date.prototype.addDays = function (days) {
   var date = new Date(this.valueOf());
   date.setDate(date.getDate() + days);
   return date;
-}
+};
 function handleRestorePost() {
   var idPost = $(this).attr("data-id");
-  var status = 'pending';
+  var status = "pending";
   $.ajax({
-    url: 'owners/update-post-room/' + idPost,
-    method: 'put',
-    data: { status }
-  }).then((result) => {
-    if (!result.error && result.status === 200) {
-      alert(result.message);
-      window.location.href = '/datatables';
-    } else {
-      alert(result.message);
-    }
-  }).catch((error) => {
-    console.log(error);
+    url: "owners/update-post-room/" + idPost,
+    method: "put",
+    data: { status },
   })
+    .then((result) => {
+      if (!result.error && result.status === 200) {
+        alert(result.message);
+        window.location.href = "/datatables";
+      } else {
+        alert(result.message);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 function handleHiredAdmin() {
   var idPost = $(this).attr("data-id");
   console.log(idPost);
-  var rent_status = 'Hired';
+  var rent_status = "Hired";
   $.ajax({
-    url: 'owners/update-post-room/' + idPost,
-    method: 'put',
-    data: { rent_status }
-  }).then((result) => {
-    if (!result.error && result.status === 200) {
-      result.message = 'Bạn đã cho thuê thành công';
-      alert(result.message);
-      $(this).parent().empty();
-      window.location.href = '/datatables';
-    } else {
-      alert(result.message);
-    }
-  }).catch((error) => {
-    console.log(error);
+    url: "owners/update-post-room/" + idPost,
+    method: "put",
+    data: { rent_status },
   })
+    .then((result) => {
+      if (!result.error && result.status === 200) {
+        result.message = "Bạn đã cho thuê thành công";
+        alert(result.message);
+        $(this).parent().empty();
+        window.location.href = "/datatables";
+      } else {
+        alert(result.message);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
