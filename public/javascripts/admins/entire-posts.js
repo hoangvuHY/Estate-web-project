@@ -44,8 +44,8 @@ $(".save_new_room").on("click", () => {
   })
     .then((result) => {
       if (!result.error && result.status === 200) {
-        alert(result.message);
-        window.location.href = "/";
+        alert("Tạo bài đăng phòng trọ thành công");
+        window.location.href = "/datatables";
       } else {
         alert(result.message);
       }
@@ -276,86 +276,86 @@ function handleEditAccept() {
  
 <div class='row'>
   <div class="form-group  col-6">
-    <label for="address_room ">Address Room *</label>
+    <label for="address_room ">Địa chỉ phòng trọ</label>
     <p>${dataPost.address_room}</p>
   </div>
   <div class="form-group  col-6 ">
-    <label for="near_places ">Near any public places</label>
+    <label for="near_places ">Địa điểm công cộng gần đó</label>
     <p>${dataPost.near_places}</p>
 
   </div>
   <div class="form-group   col-6 ">
-    <label for="kind_room">Kind of Room</label>
+    <label for="kind_room">Loại phòng</label>
     <p>${dataPost.kind_room}</p> 
   </div>
   <div class="form-group  col-6 ">
-    <label for="number_room">Number of Room</label>
+    <label for="number_room">Số phòng</label>
     <p>${dataPost.number_room}</p> 
   </div>
 
   <div class="form-group   col-6 ">
-    <label for="price">Prices</label>
+    <label for="price">Giá</label>
     <p>${dataPost.price}</p> 
  
   </div>
 
 
   <div class="form-group  col-6 ">
-    <label for="area">Area</label>
+    <label for="area">Diện tích</label>
     <p>${dataPost.area}</p>  
   </div>
   <div class="form-group  col-6 ">
-    <label for="general_owner">General owner</label>    
+    <label for="general_owner">Chung chủ</label>    
     <p>${dataPost.general_owner}</p>   
     </select>
   </div>
   
   <div class="form-group  col-6  ">
-    <label for="time_post">Time the post shows up</label>
+    <label for="time_post">Thời gian bài đăng</label>
     <p>${dataPost.time_post} Day</p>        
   </div>
   <div class="form-group  ">
     <div class="row">
-      <h2 class="col-sm-12">Physical facilities</h2>
+      <h2 class="col-sm-12">Cơ sở vật chất</h2>
       <div class="col-sm-6">
-        <label for="bathroom">Bathroom *</label>
+        <label for="bathroom">Phòng Tắm</label>
           <p>${dataPost.bathroom}</p>    
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
-        <label for="hot_cold_bottles">Hot and cold bottles *</label>
+        <label for="hot_cold_bottles">Bình nóng lạnh</label>
         <p>${dataPost.hot_cold_bottles}</p>     
       </div>
       <div class="col-sm-6">
-        <label for="kitchen">Kitchen Room</label>
+        <label for="kitchen">Nhà bếp</label>
         <p>${dataPost.kitchen}</p>      
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
-        <label for="cooking">Cooking</label>
+        <label for="cooking">Nấu ăn</label>
         <p>${dataPost.cooking}</p>       
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
-        <label for="conditioning">Air Conditioning</label>
+        <label for="conditioning">Điều hòa</label>
         <p>${dataPost.conditioning}</p>       
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
-        <label for="balcony">Balcony</label>   
+        <label for="balcony">Ban công</label>   
         <p>${dataPost.conditioning}</p>       
 
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
         <div class="row">
           <div class="col-sm-6">
-            <label for="electricity_price">Electricity Price</label>
+            <label for="electricity_price">Giá điện</label>
             <p>${dataPost.electricity_price}</p>        
           </div>
           <div class="col-sm-6">
-            <label for="water_price">Water Price</label>
+            <label for="water_price">Giá nước</label>
             <p>${dataPost.water_price}</p>         
           </div>
         </div>
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
-        <label for="other_utility">Other Utility</label>
+        <label for="other_utility">Tiện ích khác</label>
         <p>${dataPost.other_utility}</p>        
       </div><!-- ennd col-6 -->
     </div>

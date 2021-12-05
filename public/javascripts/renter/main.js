@@ -4,10 +4,11 @@ function getLoginRegister() {
   console.log() // => 'value  );
   var template;
   if (!Cookies.get('token')) { // nó ở module nào vậy
+
     template = `
     <div class="amount-like">
         <div id="amount-like">3</div>
-        <i class="far fa-heart"></i></span>
+        <i class="far fa-heart" style="cursor: pointer;" ></i></span>
     </div>
     <a href="/login" id="login">Đăng nhập</a>
     <span>/</span>
@@ -25,7 +26,7 @@ function getLoginRegister() {
         template = `
         <div class="amount-like">
         <div id="amount-like">${dataUser.favorite_post.length}</div>
-            <i class="far fa-heart"></i></span>
+            <i class="far fa-heart" style="cursor: pointer;"></i></span>
         </div>
         <a href='#' id="login">${dataUser.name}</a>
         <span>/</span>

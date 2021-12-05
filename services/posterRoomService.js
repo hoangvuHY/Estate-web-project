@@ -93,19 +93,11 @@ async function searchAllPostService(
   hot_cold_bottles,
   other_utility
 ) {
-  const obj_search = {};
-
-  if (address_room) {
-    console.log(
-      "vao day",
-      await PostRoom.find({
-        $text: {
-          $search: address_room,
-        },
-      })
-    );
+  let obj_search = {};
+  if (address_room != "") {
+    obj_search.address_room = new RegExp(address_room);
   }
-
+  console.log(obj_search);
   if (kind_room != "") obj_search.kind_room = new RegExp(kind_room.trim());
 
   if (general_owner != "")
@@ -121,19 +113,11 @@ async function searchAllPostService(
     $gte: Number(price_min) * 1000000,
     $lte: Number(price_max) * 1000000,
   };
-
   obj_search.status = "active";
-
   let distance = 6;
-
-  console.log(obj_search);
-
   let length = await PostRoom.find(obj_search).countDocuments();
-  // console.log("obj ", obj_search);
-  // console.log("Find room", await PostRoom.find(obj_search));
   // cách viết nếu dùng await kết hợp với return, sau đó dùng kết quả trả về để return trực tiếp ra một kết quả.
   let kq = await PostRoom.find(obj_search).populate("idOwner").skip(n).limit(6);
-  // console.log(kq, length);
   return [kq, length, distance];
 }
 

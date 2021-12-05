@@ -394,6 +394,8 @@ function getNotifies() {
     method: "get",
   })
     .then((result) => {
+      console.log(result.notifyOwner);
+
       if (!result.error && result.status === 200) {
         var { notifyOwner } = result;
 
@@ -408,10 +410,7 @@ function getNotifies() {
         });
       }
 
-      console.log(result.notifyOwner);
-
       if (result.notifyOwner.length === 0) {
-        console.log("Vao rong");
         const template = `
           <a class="dropdown-item" href="#">
             No notice
