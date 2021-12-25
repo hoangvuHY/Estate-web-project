@@ -61,6 +61,7 @@ let checkAuthController = (req, res) => {
   return res.render("renter/home");
 }
 
+
 module.exports = {
   signUpController,
   loginController,

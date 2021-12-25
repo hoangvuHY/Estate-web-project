@@ -5,6 +5,7 @@ let { createReportService, allReportsService, checkCommentService, allCommentsSe
 } = require('../services/opinionService');
 var { caseSuccess, caseErrorUser, caseErrorServer } = require('../utils/returnValue');
 var { Verify } = require('../utils/JWT');
+
 // Tạo ra báo cáo của người thuê
 let createReportController = async (req, res) => {
   try {

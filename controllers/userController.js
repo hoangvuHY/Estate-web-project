@@ -3,6 +3,7 @@ let { updateStatusService } = require('../services/modifiesOwnerService')
 var { caseSuccess, caseErrorUser, caseErrorServer } = require('../utils/returnValue');
 var { Verify } = require('../utils/JWT');
 
+
 let getUserDetailController = async (req, res) => {
   try {
     var token = req.cookies.token || req.body.token;

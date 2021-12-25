@@ -27,4 +27,5 @@ const opinionRenterSchema = mongoose.Schema({
 });
 
 const opinionRenterModel = mongoose.model('opinion_renter', opinionRenterSchema);
+
 module.exports = opinionRenterModel;

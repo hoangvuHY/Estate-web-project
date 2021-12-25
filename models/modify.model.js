@@ -11,5 +11,6 @@ let modifiesSchema = new Schema({
   collection: 'modify_owner',
   timestamps: true,
 })
+
 var modifiesModel = mongoose.model('modify_owner', modifiesSchema);
 module.exports = modifiesModel;

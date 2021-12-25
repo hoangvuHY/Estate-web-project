@@ -8,5 +8,6 @@ let notifiesSchema = new Schema({
   collection: 'notifies',
   timestamps: true,
 })
+
 var notifiesModel = mongoose.model('notifies', notifiesSchema);
 module.exports = notifiesModel;

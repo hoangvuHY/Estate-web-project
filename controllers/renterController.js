@@ -110,6 +110,7 @@ function searchAllPostController(req, res) {
     other_utility,
   } = req.body;
 
+  
   searchAllPostService(
     Number(n),
     address_room,

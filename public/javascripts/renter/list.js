@@ -112,45 +112,37 @@ $.ajax({
           <i class="far fa-image"></i>
           <span id="amount-image">${article.images_room.length}</span>
         </div>
-        <img class="img-fluid" src=${article.images_room[0].trim()} idpost=${
-          article._id
-        }>
+        <img class="img-fluid" src=${article.images_room[0].trim()} idpost=${article._id
+          }>
         <div class="card card-body">
-          <h5 class="card-title title-article" idpost=${article._id}>${
-          article.kind_room
-        }</h5>
+          <h5 class="card-title title-article" idpost=${article._id}>${article.kind_room
+          }</h5>
           <div class="row info-article">
             <div class="col-6 text-left">
-              <i class="fas fa-money-bill"></i><span>${
-                article.price / 1000000
-              } triệu/tháng</span>
+              <i class="fas fa-money-bill"></i><span>${article.price / 1000000
+          } triệu/tháng</span>
             </div>
             <div class="col-6 text-right">
-              <i class="fas fa-home"></i><span>${
-                article.area
-              } m<sup>2</sup></span>
+              <i class="fas fa-home"></i><span>${article.area
+          } m<sup>2</sup></span>
             </div>
             <div class="col-12 text-left">
-              <i class="fas fa-map-marker-alt"></i><span>${
-                article.address_room
-              }</span>
+              <i class="fas fa-map-marker-alt"></i><span>${article.address_room
+          }</span>
             </div>
             <div class="col-6 text-left">
               <i class="far fa-clock"></i><span>${new Date(
-                article.createdAt
-              ).getDate()}/${
-          new Date(article.createdAt).getMonth() + 1
-        }/${new Date(article.createdAt).getFullYear()}</span>
+            article.createdAt
+          ).getDate()}/${new Date(article.createdAt).getMonth() + 1
+          }/${new Date(article.createdAt).getFullYear()}</span>
             </div>
             <div class="col-3 text-right">
-              <i class="far fa-eye text-info" id="seen"></i><span>${
-                article.seen
-              }</span>
+              <i class="far fa-eye text-info" id="seen"></i><span>${article.seen
+          }</span>
             </div>
             <div class="col-3 text-right">
-              <i class="far fa-heart" id="like" idpost=${
-                article._id
-              }></i><span id="total-like">${article.like}</span>
+              <i class="far fa-heart" id="like" idpost=${article._id
+          }></i><span id="total-like">${article.like}</span>
             </div>
           </div>
         </div>
@@ -160,7 +152,7 @@ $.ajax({
       }
     });
   })
-  .catch(function (err) {});
+  .catch(function (err) { });
 
 //console.log(kind_room ,address_room, general_owner, balcony, conditioning, hot_cold_bottles, other_utility);
 // status: active
@@ -197,59 +189,53 @@ $("#next").on("click", function () {
       .then(function (result) {
         let html_parent = "";
         result.data[0].forEach((article, index) => {
-          let html = `
-                  <div class="col-md-4 wow bounceInLeft" id=${article._id}>
-                    <div class="amount-image">
-                      <i class="far fa-image"></i>
-                      <span id="amount-image">${
-                        article.images_room.length
-                      }</span>
-                    </div>
-                    <img class="img-fluid" idpost=${article._id} src=${
-            article.images_room[0]
-          }>
-                    <div class="card card-body">
-                      <h5 class="card-title title-article" idpost=${
-                        article._id
-                      }>${article.kind_room}</h5>
-                      <div class="row info-article">
-                        <div class="col-6 text-left">
-                          <i class="fas fa-money-bill"></i><span>${
-                            article.price / 1000000
-                          } triệu/tháng</span>
-                        </div>
-                        <div class="col-6 text-right">
-                          <i class="fas fa-home"></i><span>${
-                            article.area
-                          } m<sup>2</sup></span>
-                        </div>
-                        <div class="col-12 text-left">
-                          <i class="fas fa-map-marker-alt"></i><span>${
-                            article.address_room
-                          }</span>
-                        </div>
-                        <div class="col-6 text-left">
-                          <i class="far fa-clock"></i><span>${new Date(
-                            article.createdAt
-                          ).getDate()}/${
-            new Date(article.createdAt).getMonth() + 1
-          }/${new Date(article.createdAt).getFullYear()}</span>
-                        </div>
-                        <div class="col-3 text-right">
-                           <i class="far fa-eye text-info" id="seen"></i><span>${
-                             article.seen
-                           }</span>
-                        </div>
-                        <div class="col-3 text-right">
-                          <i class="far fa-heart" id="like" idpost=${
-                            article._id
-                          }></i><span id="total-like">${article.like}</span>
-                        </div>
-                      </div>
-                    </div>
+          if (article.status === 'active') {
+
+            let html = `
+            <div class="col-md-4 wow bounceInLeft" id=${article._id}>
+              <div class="amount-image">
+                <i class="far fa-image"></i>
+                <span id="amount-image">${article.images_room.length
+              }</span>
+              </div>
+              <img class="img-fluid" idpost=${article._id} src=${article.images_room[0]
+              }>
+              <div class="card card-body">
+                <h5 class="card-title title-article" idpost=${article._id
+              }>${article.kind_room}</h5>
+                <div class="row info-article">
+                  <div class="col-6 text-left">
+                    <i class="fas fa-money-bill"></i><span>${article.price / 1000000
+              } triệu/tháng</span>
                   </div>
-        `;
-          $(".mom-article").append(html);
+                  <div class="col-6 text-right">
+                    <i class="fas fa-home"></i><span>${article.area
+              } m<sup>2</sup></span>
+                  </div>
+                  <div class="col-12 text-left">
+                    <i class="fas fa-map-marker-alt"></i><span>${article.address_room
+              }</span>
+                  </div>
+                  <div class="col-6 text-left">
+                    <i class="far fa-clock"></i><span>${new Date(
+                article.createdAt
+              ).getDate()}/${new Date(article.createdAt).getMonth() + 1
+              }/${new Date(article.createdAt).getFullYear()}</span>
+                  </div>
+                  <div class="col-3 text-right">
+                     <i class="far fa-eye text-info" id="seen"></i><span>${article.seen
+              }</span>
+                  </div>
+                  <div class="col-3 text-right">
+                    <i class="far fa-heart" id="like" idpost=${article._id
+              }></i><span id="total-like">${article.like}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+  `;
+            $(".mom-article").append(html);
+          }
           /*
         html_parent += html_child;
         if(index % 3 == 2){
@@ -263,7 +249,7 @@ $("#next").on("click", function () {
         }*/
         });
       })
-      .catch(function (err) {});
+      .catch(function (err) { });
   }
 });
 
@@ -288,52 +274,47 @@ $("#prev").on("click", function () {
       .then(function (result) {
         let html_parent = "";
         result.data[0].forEach((article, index) => {
-          let html = `
-                  <div class="col-md-4 wow bounceInRight" id=${article._id}>
-                    <div class="amount-image">
-                      <i class="far fa-image"></i>
-                      <span id="amount-image">${
-                        article.images_room.length
-                      }</span>
-                    </div>
-                    <img class="img-fluid" idpost=${article._id} src=${
-            article.images_room[0]
-          }>
-                    <div class="card card-body">
-                      <h5 class="card-title title-article" idpost=${
-                        article._id
-                      }>${article.kind_room}</h5>
-                      <div class="row info-article">
-                        <div class="col-6 text-left">
-                          <i class="fas fa-money-bill"></i><span>${
-                            article.price / 1000000
-                          } triệu/tháng</span>
-                        </div>
-                        <div class="col-6 text-right">
-                          <i class="fas fa-home"></i><span>${
-                            article.area
-                          } m<sup>2</sup></span>
-                        </div>
-                        <div class="col-12 text-left">
-                          <i class="fas fa-map-marker-alt"></i><span>${
-                            article.address_room
-                          }</span>
-                        </div>
-                        <div class="col-3 text-right">
-                           <i class="far fa-eye text-info" id="seen"></i><span>${
-                             article.seen
-                           }</span>
-                        </div>
-                        <div class="col-3 text-right">
-                           <i class="far fa-heart" id="like" idpost=${
-                             article._id
-                           }></i><span id="total-like">${article.like}</span>
-                        </div>
-                      </div>
-                    </div>
+          if (article.status === "active") {
+
+            let html = `
+            <div class="col-md-4 wow bounceInRight" id=${article._id}>
+              <div class="amount-image">
+                <i class="far fa-image"></i>
+                <span id="amount-image">${article.images_room.length
+              }</span>
+              </div>
+              <img class="img-fluid" idpost=${article._id} src=${article.images_room[0]
+              }>
+              <div class="card card-body">
+                <h5 class="card-title title-article" idpost=${article._id
+              }>${article.kind_room}</h5>
+                <div class="row info-article">
+                  <div class="col-6 text-left">
+                    <i class="fas fa-money-bill"></i><span>${article.price / 1000000
+              } triệu/tháng</span>
                   </div>
-        `;
-          $(".mom-article").append(html);
+                  <div class="col-6 text-right">
+                    <i class="fas fa-home"></i><span>${article.area
+              } m<sup>2</sup></span>
+                  </div>
+                  <div class="col-12 text-left">
+                    <i class="fas fa-map-marker-alt"></i><span>${article.address_room
+              }</span>
+                  </div>
+                  <div class="col-3 text-right">
+                     <i class="far fa-eye text-info" id="seen"></i><span>${article.seen
+              }</span>
+                  </div>
+                  <div class="col-3 text-right">
+                     <i class="far fa-heart" id="like" idpost=${article._id
+              }></i><span id="total-like">${article.like}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+  `;
+            $(".mom-article").append(html);
+          }
           /*
         html_parent += html_child;
         if(index % 3 == 2){
@@ -347,7 +328,7 @@ $("#prev").on("click", function () {
         }*/
         });
       })
-      .catch(function (err) {});
+      .catch(function (err) { });
   }
 });
 

@@ -1,8 +1,7 @@
 var connectDB = () => {
   const mongoose = require("mongoose");
 
-  // tinhs sau
-  let URL = process.env.DB_CLOUD;
+  let URL = `${process.env.DB_PROTOCOL}://${process.env.DB_HOST}/${process.env.DB_NAME}`; 
 
   mongoose.connect(URL, {
     useNewUrlParser: true,
@@ -18,4 +17,5 @@ var connectDB = () => {
 
   return mongoose;
 };
+
 module.exports = connectDB;

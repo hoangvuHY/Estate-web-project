@@ -198,6 +198,7 @@ function getAllPosts() {
             <th>${post._id}</th>
             <td>${post.idOwner.role}</td>
             <td>${new Date(post.createdAt).toLocaleDateString()}</td>
+            <td></td>  
             <td>${post.status}</td>  
             <td></td>  
             <td>

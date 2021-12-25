@@ -88,4 +88,5 @@ const posterRoomSchema = mongoose.Schema({
 });
 
 const posterRoomModel = mongoose.model('poster_room', posterRoomSchema);
+
 module.exports = posterRoomModel;

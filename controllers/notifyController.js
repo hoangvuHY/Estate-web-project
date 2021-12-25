@@ -7,7 +7,6 @@ var {
 var { caseSuccess, caseErrorUser, caseErrorServer } = require('../utils/returnValue');
 var { Verify } = require('../utils/JWT');
 
-
 var createNotifyController = async (req, res) => {
   try {
     var notifyObject = req.body;

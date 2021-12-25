@@ -76,6 +76,7 @@ let detailPostController = async (req, res) => {
     caseErrorServer(res, "Error Server");
   }
 };
+
 let updatePostController = async (req, res) => {
   try {
     if (req.body.images_room)

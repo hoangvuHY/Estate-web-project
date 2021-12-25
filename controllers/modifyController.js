@@ -23,6 +23,7 @@ let createModifyController = async (req, res) => {
     caseErrorServer(res, "Error Server")
   }
 }
+
 let getOwnerController = async (req, res) => {
   try {
     var dataOwner = await getOwnerService();
