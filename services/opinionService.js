@@ -15,6 +15,7 @@ let checkCommentService = (idRenter, idPost) => {
 let allReportsService = () => {
   return Opinion.find({ typeOpinion: 'report' }).populate('idRenter');
 }
+
 // Lấy tất cả comment của của người thuê
 let allCommentsService = () => {
   return Opinion.find({ typeOpinion: 'comment' }).populate('idRenter');

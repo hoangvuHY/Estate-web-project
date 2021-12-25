@@ -409,6 +409,7 @@ function getNotifies() {
             </a>
           `;
 
+          
           $(".notify-content .dropdown-content").append(template);
         });
       }

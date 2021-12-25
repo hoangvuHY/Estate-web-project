@@ -10,6 +10,7 @@ let allNotifyOwnerService = (idOwner) => {
 let allNotifyHiredService = () => {
   return Notify.find({ content: "đã được thuê" }).populate("idOwner");
 }
+
 let deleteNotifyOwnerService = (idNotify) => {
   return Notify.deleteOne({ _id: idNotify })
 }

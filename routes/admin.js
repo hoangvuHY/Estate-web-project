@@ -4,6 +4,7 @@ var { getOwnerController, cancelOwnerController } = require('../controllers/modi
 var { updateUserController } = require('../controllers/userController');
 let { checkAuth, checkAdmin } = require('../middleware/index');
 let { allReportsController, allCommentsController,acceptCommentController, cancelCommentController } = require('../controllers/opinionController')
+
 /* GET users listing. */
 router.get('/owner-verify', getOwnerController);
 router.use(checkAuth);

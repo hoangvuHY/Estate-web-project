@@ -4,6 +4,7 @@ $("button.payment-post").on('click', () => {
     method: 'GET',
     url: '/users/user-detail'
   }).then((result) => {
+    
     var { dataUser } = result;
     const price = 2;
     var template = `

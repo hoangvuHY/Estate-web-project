@@ -20,6 +20,7 @@ let signUpService = (infoUser) => {
   if (password && email) {
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(password, salt);
+
     return UserModel.create({ email, username, identification, address, phone, birthday, name, role, password: hash, })
   } else {
     throw "Error"

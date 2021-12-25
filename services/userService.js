@@ -14,7 +14,6 @@ let updateUserService = (id,name,phone,address,username)=>{
   if(phone) modifyUser.phone = phone;
   if(address) modifyUser.address = address;
   if(username) modifyUser.username = username;
-  console.log( "modify: ",id, modifyUser);
 
   return UserModel.updateOne({ _id: id }, modifyUser);
 }

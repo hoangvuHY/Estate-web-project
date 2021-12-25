@@ -14,7 +14,6 @@ router.post("/get-favorite-post", getFavoritePostController);
 
 router.post("/save-favorite-post", saveFavoritePostController);
 
-
 // lay tat ca ca bai dang theo chuoi tim kiem
 router.post("/search", searchAllPostController);
 // lấy tất cả các bài đăng

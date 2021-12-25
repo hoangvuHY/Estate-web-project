@@ -9,7 +9,6 @@ var {
    checkLoginMiddleware
 } = require('../middleware/index')
 
-
 router.post('/sign-up', isEmailMiddleware, signUpController)
 router.post('/login', checkLoginMiddleware, loginController)
 
