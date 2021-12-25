@@ -123,6 +123,7 @@
 			end: 'webkitAnimationEnd oanimationend MSAnimationEnd animationend'
 		};
 
+		
 		if (typeof this.settings.offset === 'number') {
 			this.settings.offset = {
 				x: this.settings.offset,

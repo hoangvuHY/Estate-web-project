@@ -6,6 +6,7 @@ function getData() {
   }).then((result) => {
     if (!result.error && result.status === 200) {
       var { dataOwner } = result;
+      
       dataOwner.forEach((element) => {
         var template
         if (element.status === 'pending') {

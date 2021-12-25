@@ -1,4 +1,5 @@
 getData();
+
 function getData() {
   $.ajax({
     method: 'GET',

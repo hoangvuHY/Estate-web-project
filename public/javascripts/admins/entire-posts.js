@@ -18,6 +18,7 @@ $(".save_new_room").on("click", () => {
   var time_post = $('select[name="time_post"]').val();
   var status = "active";
 
+  
   $.ajax({
     url: "/owners/post-room",
     method: "post",
