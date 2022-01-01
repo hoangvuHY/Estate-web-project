@@ -49,7 +49,7 @@ let checkAuthController = (req, res) => {
   var user = req.userLocal
   if (user) {
     if (user.role === "admin") {
-      return res.render("admin/dashboard_v1");
+      return res.render("admin/datatables");
     }
     if (user.role === "owner") {
       return res.render("owners/homeOwner");

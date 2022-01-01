@@ -46,7 +46,7 @@ $(".save_new_room").on("click", () => {
     .then((result) => {
       if (!result.error && result.status === 200) {
         alert("Tạo bài đăng phòng trọ thành công");
-        window.location.href = "/datatables";
+        window.location.href = "/";
       } else {
         alert(result.message);
       }
@@ -119,7 +119,7 @@ function getAllPosts() {
               <td>${new Date(post.createdAt).toLocaleDateString()}</td>
               <td></td>
               <td>${post.status}</td> 
-              <td>${post.rent_status}</td>  
+              <td>Đã được thuê</td>  
               <td></td> 
               <td></td>  
             </tr> 
@@ -133,7 +133,7 @@ function getAllPosts() {
               <td>${new Date(post.createdAt).toLocaleDateString()}</td>
               <td>${new Date(post.expire_post).toLocaleDateString()}</td>
               <td>${post.status}</td> 
-              <td>${post.rent_status}</td>  
+              <td>Chưa được thuê</td>  
               <td></td> 
               <td></td>  
             </tr> 
@@ -161,7 +161,7 @@ function getAllPosts() {
               <td>${new Date(post.createdAt).toLocaleDateString()}</td>
               <td></td>
               <td>${post.status}</td> 
-              <td>${post.rent_status}</td>  
+              <td>Đã được thuê</td>  
               <td></td> 
               <td></td>  
             </tr> 
@@ -179,14 +179,14 @@ function getAllPosts() {
               <td>${new Date(post.createdAt).toLocaleDateString()}</td>
               <td></td> 
               <td>${post.status}</td> 
-              <td>${post.rent_status}</td>  
+              <td>Chưa được thuê</td>  
               <td></td> 
               <td></td> 
               <td>
                 <button onClick=handleHiredAdmin.call(this) style="font-size:13px;padding: 7px; " data-id = ${
                   post._id
                 }  type="button" class="btn btn-primary btn-hired">
-                   <i style="  margin-right: 5px;" class="fas fa-check"></i>Hired
+                   <i style="  margin-right: 5px;" class="fas fa-check"></i>Đã thuê
                 </button>
               </td> 
             </tr> 
@@ -325,7 +325,7 @@ function handleEditAccept() {
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
         <label for="hot_cold_bottles">Bình nóng lạnh</label>
-        <p>${dataPost.hot_cold_bottles}</p>     
+        <p>${dataPost.hot_cold_bottles == 'Yes' ? 'Có': 'Không'}</p>     
       </div>
       <div class="col-sm-6">
         <label for="kitchen">Nhà bếp</label>
@@ -333,15 +333,15 @@ function handleEditAccept() {
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
         <label for="cooking">Nấu ăn</label>
-        <p>${dataPost.cooking}</p>       
+        <p>${dataPost.cooking == 'Yes' ? 'Có': 'Không'}</p>       
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
         <label for="conditioning">Điều hòa</label>
-        <p>${dataPost.conditioning}</p>       
+        <p>${dataPost.conditioning == 'Yes' ? 'Có': 'Không'}</p>       
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
         <label for="balcony">Ban công</label>   
-        <p>${dataPost.conditioning}</p>       
+        <p>${dataPost.conditioning =='Yes' ? 'Có': 'Không'}</p>       
 
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
@@ -367,8 +367,8 @@ function handleEditAccept() {
   </div>
 </div> 
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button onClick = handleAcceptedPost.call(this) data-time-post="${dataPost.time_post}" data-id-owner =  '${dataPost.idOwner} ' data-id = '${dataPost._id} ' type="button" class="btn btn-primary ">Accept</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+      <button onClick = handleAcceptedPost.call(this) data-time-post="${dataPost.time_post}" data-id-owner =  '${dataPost.idOwner} ' data-id = '${dataPost._id} ' type="button" class="btn btn-primary ">Chấp nhận</button>
     </div>
 `;
       $(".content-edit-accept").append(template);
@@ -400,7 +400,7 @@ function handleAcceptedPost() {
     .then((result) => {
       if (!result.error && result.status === 200) {
         alert(result.message);
-        window.location.href = "/datatables";
+        window.location.href = "/";
       } else {
         alert(result.message);
       }
@@ -427,7 +427,7 @@ function handleCancelPost() {
     .then((result) => {
       if (!result.error && result.status === 200) {
         alert(result.message);
-        window.location.href = "/datatables";
+        window.location.href = "/";
       } else {
         alert(result.message);
       }
@@ -457,7 +457,7 @@ function handleRestorePost() {
     .then((result) => {
       if (!result.error && result.status === 200) {
         alert(result.message);
-        window.location.href = "/datatables";
+        window.location.href = "/";
       } else {
         alert(result.message);
       }
@@ -480,7 +480,7 @@ function handleHiredAdmin() {
         result.message = "Bạn đã cho thuê thành công";
         alert(result.message);
         $(this).parent().empty();
-        window.location.href = "/datatables";
+        window.location.href = "/";
       } else {
         alert(result.message);
       }

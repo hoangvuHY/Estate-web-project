@@ -50,9 +50,7 @@ router.get('/chat-room', checkAuth, checkOwner_Admin, function (req, res,) {
 router.get('/credits', checkAuth, checkAdmin, function (req, res, next) {
   res.render('admin/credits', { title: 'Express' });
 });
-router.get('/datatables', checkAuth, checkAdmin, function (req, res, next) {
-  res.render('admin/datatables', { title: 'Express' });
-});
+
 router.get('/mail-box', checkAuth, checkAdmin, function (req, res, next) {
   res.render('admin/mail-box', { title: 'Express' });
 });

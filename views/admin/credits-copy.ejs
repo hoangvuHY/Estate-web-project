@@ -19,7 +19,6 @@
   <link href="../asset/css/style.css" rel="stylesheet">
   <!-- end: Css -->
 
-  <link rel="shortcut icon" href="../asset/img/logomi.png">
   <link rel="stylesheet" href="../stylesheets/chat-room.css" />
 
 </head>
@@ -34,22 +33,17 @@
           <span class="middle"></span>
           <span class="bottom"></span>
         </div>
-        <a href="/" class="navbar-brand">
+        <a href="/" class="navbar-brand" style="float:right" >
           <b>ADMIN</b>
-        </a>
 
-        <ul class="nav navbar-nav search-nav">
-          <li>
-            <div class="search">
-              <span class="fa fa-search icon-search" style="font-size:23px;"></span>
-              <div class="form-group form-animate-text">
-                <input type="text" class="form-text" required="">
-                <span class="bar"></span>
-                <label class="label-search">Type anywhere to <b>Search</b> </label>
-              </div>
-            </div>
-          </li>
-        </ul>
+          <button style="
+                    border: none;
+                    color: #716767;
+                    background: no-repeat;
+                ">
+                <span class="fa fa-power-off signOutIcon"></span>
+              </button>
+        </a>
 
         <ul class="nav navbar-nav navbar-right user-nav">
           <li class="user-name"><span></span></li>
@@ -57,19 +51,13 @@
             <img src="https://picsum.photos/seed/picsum/200/300" class="img-circle avatar" alt="user name" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="true">
             <ul class="dropdown-menu user-dropdown">
-              <li><a href="#"><span class="fa fa-user"></span> My Profile</a></li>
-              <li><a href="#"><span class="fa fa-calendar"></span> My Calendar</a></li>
-              <li role="separator" class="divider"></li>
               <li class="more">
                 <ul>
-                  <li><a href=""><span class="fa fa-cogs"></span></a></li>
-                  <li><a href=""><span class="fa fa-lock"></span></a></li>
                   <li><a href=""><span class="fa fa-power-off "></span></a></li>
                 </ul>
               </li>
             </ul>
           </li>
-          <li><a href="#" class="opener-right-menu"><span class="fa fa-coffee"></span></a></li>
         </ul>
       </div>
     </div>
@@ -86,34 +74,21 @@
           </li>
           <li class="time">
             <h1 class="animated fadeInLeft">08:51</h1>
-            <p class="animated fadeInRight">Wednesday, December 9th 2020</p>
           </li>
-          <li class="active ripple">
-            <a class="tree-toggle nav-header"><span class="fa-home fa"></span> Trang Chủ
-              <span class="fa right-arrow text-right fa-angle-right"></span>
-              <span class="ink"></span></a>
-            <ul class="nav nav-list tree" style="display: none;">
-              <li><a href="/">Trang Chủ</a></li>
-              <li></li>
-            </ul>
-          </li>
-
-
-
 
           <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-table"></span> Bảng dữ liệu <span
                 class="fa right-arrow text-right fa-angle-right"></span> <span class="ink"></span></a>
             <ul class="nav nav-list tree" style="display: none;">
-              <li><a href="/datatables">Data Tables</a></li>
+              <li><a href="/">Data Tables</a></li>
 
 
             </ul>
           </li>
 
-          <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-envelope-o"></span> Mail <span
+          <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-envelope-o"></span> Tin nhắn <span
                 class="fa right-arrow text-right fa-angle-down"></span> <span class="ink"></span></a>
             <ul class="nav nav-list tree" style="">
-              <li><a href="/mail-box">Inbox</a></li>
+              <li><a href="/mail-box">Tin nhắn</a></li>
 
 
             </ul>
@@ -131,22 +106,22 @@
     <div id="content" class="article-v1">
       <div class="chat-container">
         <header class="chat-header">
-          <h1><i class="fas fa-smile"></i> ChatCord</h1>
-          <a href="/" class="btn">Leave Room</a>
+          <h1>Chat nhóm</h1>
+          <a href="/" class="btn">Rời phòng</a>
         </header>
         <main class="chat-main">
           <div class="chat-sidebar">
-            <h3><i class="fas fa-comments"></i> Room Name:</h3>
+            <h3><i class="fas fa-comments"></i> Tên phòng:</h3>
             <h2 id="room-name"></h2>
-            <h3><i class="fas fa-users"></i> Users</h3>
+            <h3><i class="fas fa-users"></i> Thành viên</h3>
             <ul id="users"></ul>
           </div>
           <div class="chat-messages"></div>
         </main>
         <div class="chat-form-container">
           <form id="chat-form">
-            <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
-            <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+            <input id="msg" type="text" placeholder="Nhập tin nhắn" required autocomplete="off" />
+            <button class="btn"><i class="fas fa-paper-plane"></i> Gửi</button>
           </form>
         </div>
       </div>

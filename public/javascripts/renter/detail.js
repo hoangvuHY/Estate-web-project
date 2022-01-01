@@ -162,7 +162,7 @@ function reportToAdmin() {
             <label class="color">Nội dung báo cáo</label>
             <textarea class="w-75 pl-2 contentReport"></textarea>
           </div>
-      <div onClick= handleSendToAdmin.call(this) data-id="${dataUser._id}" class="send" id="send-report">SEND</div> 
+      <div onClick= handleSendToAdmin.call(this) data-id="${dataUser._id}" class="send" id="send-report">Gửi</div> 
       `;
     }
     $(".report").append(template)

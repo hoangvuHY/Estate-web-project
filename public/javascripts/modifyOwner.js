@@ -102,8 +102,8 @@ body {
         </div> 
       </div>
       <div class="row mt-3">
-      <p>Is your profile?
-      <a href="/profile-owner">Profile</a>
+      <p>Quay lại thông tin tài khoản?
+      <a href="/profile-owner">Tài khoản</a>
     </p>  
  
       </div>

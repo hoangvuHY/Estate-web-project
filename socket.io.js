@@ -6,7 +6,7 @@ const {
   userLeave,
   getRoomUsers
 } = require('./utils/users');
-const botName = 'ChatCord Bot';
+const botName = 'Chat nhom ';
 
 let io = socket_io();
 let socketAPI = {};
@@ -34,14 +34,14 @@ io.on('connection', (socket) => {
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+    socket.emit('message', formatMessage(botName, 'Xin chao!'));
 
     // Broadcast when a user connects
     socket.broadcast
       .to(user.room)
       .emit(
         'message',
-        formatMessage(botName, `${user.username} has joined the chat`)
+        formatMessage(botName, `${user.username} đã tham gia phòng`)
       );
 
     // Send users and room info . Lấy thông tin của phòng và thông tin của users để đưa vào bảng broadcast
@@ -87,7 +87,7 @@ io.on('connection', (socket) => {
       //Gửi đến các user trong phòng đó với tin nhắn là đã rời phòng
       io.to(user.room).emit(
         'message',
-        formatMessage(botName, `${user.username} has left the chat`)
+        formatMessage(botName, `${user.username} đã rời phòng`)
       );
 
       // Send users and room info . Lấy thông tin của phòng và thông tin của users để đưa vào bảng broadcast

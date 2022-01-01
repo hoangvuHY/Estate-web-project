@@ -18,8 +18,8 @@ function getData() {
             <td  class ='username'>${element.username}</td>
             <td  class ='status'>${element.status}</td>
             <td>
-              <button onClick = handleAccepted.call(this) data-id = ${element._id} data-owner =${element.idOwner}  class="accepted btn-primary ">Accept</button>
-              <button onClick = handleCancel.call(this)  class="cancel btn-danger"   data-id = ${element._id} data-owner =${element.idOwner}>Cancel</button>
+              <button onClick = handleAccepted.call(this) data-id = ${element._id} data-owner =${element.idOwner}  class="accepted btn-primary ">Chấp nhận</button>
+              <button onClick = handleCancel.call(this)  class="cancel btn-danger"   data-id = ${element._id} data-owner =${element.idOwner}>Huỷ</button>
             </td>
           </tr> 
                 `

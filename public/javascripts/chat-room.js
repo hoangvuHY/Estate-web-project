@@ -16,7 +16,7 @@ $.ajax({
 const socket = io();
 var username = name_detail;
 // Get username and room from URL
-const room = 'Chat Group';
+const room = 'Chat nhom';
 
 // Join chatroom. Cái này dùng để chat riêng với nhóm
 socket.emit('joinRoom', { username, room });

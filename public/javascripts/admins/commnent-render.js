@@ -17,8 +17,8 @@ function getData() {
                 <td >${element.status}</td>
                 <td >${element.content}</td> 
                 <td>
-                  <button onClick = handleAccepted.call(this) data-id = ${element._id} class="accepted btn-primary ">Accept</button>
-                  <button onClick = handleCancel.call(this)  class="cancel btn-danger" data-id = ${element._id} >Cancel</button>
+                  <button onClick = handleAccepted.call(this) data-id = ${element._id} class="accepted btn-primary ">Chấp nhận</button>
+                  <button onClick = handleCancel.call(this)  class="cancel btn-danger" data-id = ${element._id} >Huỷ</button>
                 </td>
               </tr> `;
 

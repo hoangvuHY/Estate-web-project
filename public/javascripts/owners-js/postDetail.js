@@ -58,7 +58,7 @@ function getData() {
                   <td>${new Date(element.createdAt).toLocaleDateString()}</td>
                   <td></td>
                   <td>${element.status}</td>  
-                  <td>${element.rent_status}</td>  
+                  <td>Đã được thuê</td>  
                   <td></td>  
                   <td></td>
                   <td></td>
@@ -73,7 +73,7 @@ function getData() {
             <td>${new Date(element.createdAt).toLocaleDateString()}</td>
             <td>${new Date(element.expire_post).toLocaleDateString()}</td>
             <td>${element.status}</td>  
-            <td>${element.rent_status}</td>  
+            <td>Chưa được thuê</td>  
             <td></td>  
           <tr>
           `;//Not yet hired 
@@ -99,11 +99,11 @@ function getData() {
           <td>${new Date(element.createdAt).toLocaleDateString()}</td>
           <td>${new Date(element.expire_post).toLocaleDateString()}</td>
           <td>${element.status}</td>  
-          <td>${element.rent_status}</td>  
+          <td>Chưa được thuê</td>  
           <td></td>  
           <td class="button-hiredOwner">
             <button  onClick = handleHiredPost.call(this) data-id-owner = ${element.idOwner} style="font-size:13px;padding: 7px; " data-id = ${element._id}  type="button" class="btn btn-primary btn-hired">
-                  <i style="  margin-right: 5px;" class="fas fa-check"></i>Hired
+                  <i style="  margin-right: 5px;" class="fas fa-check"></i>Đã thuê
               </button>
           </td>    
         <tr>
@@ -226,8 +226,8 @@ function handleExtend() {
      <label for="general_owner">Chung chủ</label>
      <select class="form-control" name="general_owner" disabled id="general_owner">
        <option value= '${dataPost.general_owner}' hidden>${dataPost.general_owner}</option>
-       <option value= 'Yes' >Yes</option>
-       <option value= 'No' >No</option>
+       <option value= 'Yes' >Có</option>
+       <option value= 'No' >Không</option>
      </select>
    </div>
    <div class="form-group">
@@ -238,48 +238,48 @@ function handleExtend() {
          <select class="form-control" name="bathroom" disabled id="bathroom">
            <option value= '${dataPost.bathroom}' hidden>${dataPost.bathroom}</option>
  
-           <option value= 'Closed'>Closed</option>
-           <option value= 'General'>General</option>
+           <option value= 'Khép kín'>Khép kín</option>
+           <option value= 'Chung'>Chung</option>
          </select>
        </div><!-- ennd col-6 -->
        <div class="col-sm-6">
          <label for="hot_cold_bottles">Bình nóng lạnh *</label>
          <select class="form-control" disabled name="hot_cold_bottles" id="hot_cold_bottles">
-           <option value= '${dataPost.hot_cold_bottles}' hidden>${dataPost.hot_cold_bottles}</option>
-           <option value= 'Yes'>Yes</option>
-           <option value= 'No'>No</option>
+           <option value= '${dataPost.hot_cold_bottles}' hidden>${dataPost.hot_cold_bottles == 'Yes' ? 'Có' : 'Không'}</option>
+           <option value= 'Yes'>Có</option>
+           <option value= 'No'>Không</option>
          </select>
        </div>
        <div class="col-sm-6">
          <label for="kitchen">Nhà bếp</label>
          <select class="form-control" disabled name="kitchen" id="kitchen">
            <option value= '${dataPost.kitchen}' hidden>${dataPost.kitchen}</option>
-           <option value= 'Closed'>Closed</option>
-           <option value= 'General'>General</option>
+           <option value= 'Khép kín'>Khép kín</option>
+           <option value= 'Chung'>Chung</option>
          </select>
        </div><!-- ennd col-6 -->
        <div class="col-sm-6">
          <label for="cooking">Nấu ăn</label>
          <select class="form-control" disabled name="cooking" id="cooking">
-           <option value= '${dataPost.cooking}' hidden>${dataPost.cooking}</option>
-           <option value= 'Yes' >Yes</option>
-           <option value= 'No' >No</option>
+           <option value= '${dataPost.cooking}' hidden>${dataPost.cooking == 'Yes' ? 'Có' : 'Không'}</option>
+           <option value= 'Yes' >Có</option>
+           <option value= 'No' >Không</option>
          </select>
        </div><!-- ennd col-6 -->
        <div class="col-sm-6">
          <label for="conditioning">Điều hòa</label>
          <select class="form-control" disabled name="conditioning" id="conditioning">
-           <option value= '${dataPost.conditioning}' hidden>${dataPost.conditioning}</option>
-           <option value= 'Yes' >Yes</option>
-           <option value= 'No' >No</option>
+           <option value= '${dataPost.conditioning}' hidden>${dataPost.conditioning == 'Yes' ? 'Có' : 'Không'}</option>
+           <option value= 'Yes' >Có</option>
+           <option value= 'No' >Không</option>
          </select>
        </div><!-- ennd col-6 -->
        <div class="col-sm-6">
          <label for="balcony">Ban công</label>
          <select class="form-control" disabled name="balcony" id="balcony">
-           <option value= '${dataPost.balcony}' hidden>${dataPost.balcony}</option>
-           <option value= 'Yes' >Yes</option>
-           <option value= 'No' >No</option>
+           <option value= '${dataPost.balcony}' hidden>${dataPost.balcony == 'Yes' ? 'Có' : 'Không'}</option>
+           <option value= 'Yes' >Có</option>
+           <option value= 'No' >Không</option>
          </select>
        </div><!-- ennd col-6 -->
        <div class="col-sm-6">
@@ -323,8 +323,8 @@ function handleExtend() {
    
  </div>
          <div class="modal-footer save-changes-update">
-           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-           <button onClick=handlePaymentPost.call(this) data-status = '${dataPost.status}' data-id = "${dataPost._id}" data-images =  ${dataPost.images_room}  type="button" class="btn btn-primary payment-edit">Payment</button>
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+           <button onClick=handlePaymentPost.call(this) data-status = '${dataPost.status}' data-id = "${dataPost._id}" data-images =  ${dataPost.images_room}  type="button" class="btn btn-primary payment-edit">Hoá đơn thanh toán</button>
          </div>
  `;
     $('.content-update').append(template);
@@ -441,8 +441,8 @@ function handleEditPost() {
     <label for="general_owner">Chung chủ</label>
     <select class="form-control" name="general_owner" id="general_owner">
       <option value= '${dataPost.general_owner}' hidden>${dataPost.general_owner}</option>
-      <option value= 'Yes' >Yes</option>
-      <option value= 'No' >No</option>
+      <option value= 'Yes' >Có</option>
+      <option value= 'No' >Không</option>
     </select>
   </div>
   <div class="form-group">
@@ -453,14 +453,14 @@ function handleEditPost() {
         <select class="form-control" name="bathroom" id="bathroom">
           <option value= '${dataPost.bathroom}' hidden>${dataPost.bathroom}</option>
  
-          <option value= 'Closed'>Closed</option>
-          <option value= 'General'>General</option>
+          <option value= 'Khép kín'>Khép kín</option>
+          <option value= 'Chung'>Chung</option>
         </select>
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
         <label for="hot_cold_bottles">Bình nóng lạnh</label>
         <select class="form-control" name="hot_cold_bottles" id="hot_cold_bottles">
-          <option value= '${dataPost.hot_cold_bottles}' hidden>${dataPost.hot_cold_bottles}</option>
+          <option value= '${dataPost.hot_cold_bottles}' hidden>${dataPost.hot_cold_bottles == 'Yes' ? 'Có' : 'Không'}</option>
           <option value= 'Yes'>Yes</option>
           <option value= 'No'>No</option>
         </select>
@@ -469,32 +469,32 @@ function handleEditPost() {
         <label for="kitchen">Nhà bếp</label>
         <select class="form-control" name="kitchen" id="kitchen">
           <option value= '${dataPost.kitchen}' hidden>${dataPost.kitchen}</option>
-          <option value= 'Closed'>Closed</option>
-          <option value= 'General'>General</option>
+          <option value= 'Khép kín'>Khép kín</option>
+          <option value= 'Chung'>Chung</option>
         </select>
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
         <label for="cooking">Nấu ăn</label>
         <select class="form-control" name="cooking" id="cooking">
-          <option value= '${dataPost.cooking}' hidden>${dataPost.cooking}</option>
-          <option value= 'Yes' >Yes</option>
-          <option value= 'No' >No</option>
+          <option value= '${dataPost.cooking}' hidden>${dataPost.cooking == 'Yes' ? 'Có' : 'Không'}</option>
+          <option value= 'Yes' >Có</option>
+          <option value= 'No' >Không</option>
         </select>
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
         <label for="conditioning">Điều hòa</label>
         <select class="form-control" name="conditioning" id="conditioning">
-          <option value= '${dataPost.conditioning}' hidden>${dataPost.conditioning}</option>
-          <option value= 'Yes' >Yes</option>
-          <option value= 'No' >No</option>
+        <option value= '${dataPost.conditioning}' hidden>${dataPost.conditioning == 'Yes' ? 'Có' : 'Không'}</option>
+          <option value= 'Yes' >Có</option>
+          <option value= 'No' >Không</option>
         </select>
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
         <label for="balcony">Ban công</label>
         <select class="form-control" name="balcony" id="balcony">
-          <option value= '${dataPost.balcony}' hidden>${dataPost.balcony}</option>
-          <option value= 'Yes' >Yes</option>
-          <option value= 'No' >No</option>
+        <option value= '${dataPost.balcony}' hidden>${dataPost.balcony == 'Yes' ? 'Có' : 'Không'}</option>
+          <option value= 'Yes' >Có</option>
+          <option value= 'No' >Không</option>
         </select>
       </div><!-- ennd col-6 -->
       <div class="col-sm-6">
@@ -538,8 +538,8 @@ function handleEditPost() {
   
 </div>
         <div class="modal-footer save-changes-update">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button onClick=handlePaymentPost.call(this) data-id = "${dataPost._id}" data-images =  ${dataPost.images_room}  type="button" class="btn btn-primary payment-edit">Payment</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button onClick=handlePaymentPost.call(this) data-id = "${dataPost._id}" data-images =  ${dataPost.images_room}  type="button" class="btn btn-primary payment-edit">Hoá đơn thanh toán</button>
         </div>
 `;
     $('.content-update').append(template);

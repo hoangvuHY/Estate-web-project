@@ -82,7 +82,7 @@ $("button.payment-post").on('click', () => {
             </tbody>
           </table>
           <button type="button" onClick=handleSubmitPost.call(this) class="btn btn-success btn-lg btn-inline-block ">
-            Thanh toán ngay  <i class="fas fa-chevron-right"></i>
+            Gửi bài đăng<i class="fas fa-chevron-right"></i>
           </button></td>
         </div>
       </div>
