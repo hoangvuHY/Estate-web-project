@@ -154,18 +154,6 @@ $.ajax({
   })
   .catch(function (err) { });
 
-//console.log(kind_room ,address_room, general_owner, balcony, conditioning, hot_cold_bottles, other_utility);
-// status: active
-// address_room:
-// kind_room
-// price
-// area
-// general_owner
-// balcony
-// conditioning
-// hot_cold_bottles
-// other_utility
-
 $("#next").on("click", function () {
   n += distance;
   if (n >= length) {

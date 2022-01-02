@@ -4,26 +4,6 @@ $('.carousel').carousel({
   interval: 3000
 }); 
 
-/*
-if(Cookies.get("token")){
-  $.ajax({
-      method: "post",
-      url: "/get-favorite-post",
-      data: {
-          idRenter: Cookies.get("idRenter")
-      }
-  }).then(function(result){
-      $("#amount-like").text(result.data.favorite_arr.length);
-
-  }).catch(function(err){
-      console.log(err);
-  });
-
-}else{
-  $("#amount-like").text(0);
-}
-*/
-
 $(document).on("click", ".amount-like", function(){
   if(Cookies.get("token")){
      

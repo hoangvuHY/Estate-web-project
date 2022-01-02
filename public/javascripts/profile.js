@@ -24,7 +24,6 @@ function getData() {
                 width="150">
               <div class="mt-3">
                 <h4>${dataUser.username}</h4>
-                <p class="text-secondary mb-1">Full Stack Developer</p>
                 <p class="text-muted font-size-sm">${dataUser.address}</p>
                 <a data-user = ${dataUser.role} onClick=handleModify.call(this) class="btn btn-primary">Chỉnh sửa</a>
               </div>
@@ -116,7 +115,7 @@ function getData() {
                 <h6 class="mb-0">Số điện thoại</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                ${dataUser.phone}
+                0${dataUser.phone}
               </div>
             </div>
             <hr>

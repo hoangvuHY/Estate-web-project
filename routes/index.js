@@ -25,6 +25,10 @@ router.get('/detail/:idPost', function (req, res, next) {
 router.get('/favorite', checkAuthFavorite, function (req, res, next) {
   res.render('renter/favorite');
 });
+
+router.get('/profile', checkAuthFavorite, function (req, res, next) {
+  res.render('renter/profile');
+});
 // Kết thúc router đến giao diện cline của renter 
 
 //Owner

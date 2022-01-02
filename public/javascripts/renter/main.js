@@ -51,3 +51,14 @@ function getLoginRegister() {
 $('.nav-item.nav-link').on('click', function () {
   Cookies.remove("idPost");
 })
+
+$(document).on("click", "#profile-account", function(){
+  if(Cookies.get("token")){
+     
+      window.location.href = '/profile';
+     
+  }else{
+      alert("Bạn phải đăng nhập để sử dụng chức năng này.")
+  }
+
+});

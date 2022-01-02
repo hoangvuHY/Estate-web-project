@@ -72,7 +72,7 @@ async function allPostService(n) {
   let distance = 6;
   let length = await PostRoom.find({ status: "active" }).countDocuments();
   // cách viết nếu dùng await kết hợp với return, sau đó dùng kết quả trả về để return trực tiếp ra một kết quả.
-  let kq = await PostRoom.find({}).populate("idOwner").skip(n).limit(6);
+  let kq = await PostRoom.find({ status: "active" }).populate("idOwner").skip(n).limit(6);
   return [kq, length, distance];
   // cách viết return trực tiếp ra một Promise, mà không cần dùng kết quả trả về.
   //  return PostRoom.find().populate("idOwner").skip(n).limit(6);
