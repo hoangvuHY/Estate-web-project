@@ -7,9 +7,11 @@ function getData() {
     url: '/owners/owner-posts'
   }).then((result) => {
     var { dataPost } = result;
+
     $("tbody.infoPost").empty();
     var template;
 
+    console.log('dataPost', dataPost);
     dataPost.forEach((element) => {
       if (element.status === 'pending') {
         // Waiting for approval 
@@ -58,7 +60,7 @@ function getData() {
                   <td>${new Date(element.createdAt).toLocaleDateString()}</td>
                   <td></td>
                   <td>${element.status}</td>  
-                  <td>Đã được thuê</td>  
+                  <td>${element.rent_status}</td>  
                   <td></td>  
                   <td></td>
                   <td></td>
@@ -73,7 +75,7 @@ function getData() {
             <td>${new Date(element.createdAt).toLocaleDateString()}</td>
             <td>${new Date(element.expire_post).toLocaleDateString()}</td>
             <td>${element.status}</td>  
-            <td>Chưa được thuê</td>  
+            <td>${element.rent_status}</td>  
             <td></td>  
           <tr>
           `;//Not yet hired 
@@ -99,7 +101,7 @@ function getData() {
           <td>${new Date(element.createdAt).toLocaleDateString()}</td>
           <td>${new Date(element.expire_post).toLocaleDateString()}</td>
           <td>${element.status}</td>  
-          <td>Chưa được thuê</td>  
+          <td>${element.rent_status}</td>  
           <td></td>  
           <td class="button-hiredOwner">
             <button  onClick = handleHiredPost.call(this) data-id-owner = ${element.idOwner} style="font-size:13px;padding: 7px; " data-id = ${element._id}  type="button" class="btn btn-primary btn-hired">

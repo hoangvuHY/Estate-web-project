@@ -394,15 +394,11 @@ function getNotifies() {
     method: "get",
   })
     .then((result) => {
-      console.log(result.notifyOwner);
-
       if (!result.error && result.status === 200) {
         var { notifyOwner } = result;
 
 
         notifyOwner.forEach((element) => {
-          console.log('notifyOwner', element.idPost._id);
-
           const template = `
             <a class="dropdown-item" href="#">
               Bài viết có id ${element.idPost._id} ${element.content}

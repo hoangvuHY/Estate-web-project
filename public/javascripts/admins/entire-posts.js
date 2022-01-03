@@ -119,7 +119,7 @@ function getAllPosts() {
               <td>${new Date(post.createdAt).toLocaleDateString()}</td>
               <td></td>
               <td>${post.status}</td> 
-              <td>Đã được thuê</td>  
+              <td>${post.rent_status}</td>  
               <td></td> 
               <td></td>  
             </tr> 
@@ -133,7 +133,7 @@ function getAllPosts() {
               <td>${new Date(post.createdAt).toLocaleDateString()}</td>
               <td>${new Date(post.expire_post).toLocaleDateString()}</td>
               <td>${post.status}</td> 
-              <td>Chưa được thuê</td>  
+              <td>${post.rent_status}</td>  
               <td></td> 
               <td></td>  
             </tr> 
@@ -161,7 +161,7 @@ function getAllPosts() {
               <td>${new Date(post.createdAt).toLocaleDateString()}</td>
               <td></td>
               <td>${post.status}</td> 
-              <td>Đã được thuê</td>  
+              <td>${post.rent_status}</td>  
               <td></td> 
               <td></td>  
             </tr> 
@@ -179,7 +179,7 @@ function getAllPosts() {
               <td>${new Date(post.createdAt).toLocaleDateString()}</td>
               <td></td> 
               <td>${post.status}</td> 
-              <td>Chưa được thuê</td>  
+              <td>${post.rent_status}</td>  
               <td></td> 
               <td></td> 
               <td>
